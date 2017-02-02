@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">InterSocialPost</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="inicio">INICIO</string>
+    <string name="loading_post">Loading Posts...</string>
+    <string name="publicaciones">PUBLICACIONES</string>
+    <string name="failure_message">¡Error! Verifique su conexión e intente de nuevo más tarde.</string>
+    <string name="post_bundle">post_bundle</string>
+</resources>
