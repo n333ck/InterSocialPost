@@ -14,7 +14,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import voxfeed.com.intersocialpost.R;
-import voxfeed.com.intersocialpost.model.Post;
+import voxfeed.com.intersocialpost.model.PostFull;
 
 public class PostActivity extends AppCompatActivity {
     @BindView(R.id.textview)
@@ -26,11 +26,10 @@ public class PostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_post);
         ButterKnife.bind(this);
         Intent intent = getIntent();
-        Post post = intent.getParcelableExtra(getString(R.string.post_bundle));
+        PostFull post = intent.getParcelableExtra(getString(R.string.post_bundle));
 
-        //TODO Fix Parcelable
         if (post != null) {
-            mTextView.setText(post.getSocialNetwork());
+            mTextView.setText(post.getPost().getText());
         }
     }
 

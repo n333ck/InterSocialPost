@@ -4,7 +4,7 @@ import java.util.List;
 
 import voxfeed.com.intersocialpost.interactors.ServerRequest;
 import voxfeed.com.intersocialpost.interactors.ServerRequestImpl;
-import voxfeed.com.intersocialpost.model.Post;
+import voxfeed.com.intersocialpost.model.PostFull;
 
 /**
  * Created by rjasso on 02/02/2017.
@@ -21,7 +21,7 @@ public class PostPresenterImpl implements PostPresenter{
     }
 
     @Override
-    public void updatePost(List<Post> posts) {
+    public void updatePost(List<PostFull> posts) {
         mView.updatePosts(posts);
     }
 
@@ -36,7 +36,7 @@ public class PostPresenterImpl implements PostPresenter{
     }
 
     @Override
-    public void startPostActivity(Post post) {
+    public void startPostActivity(PostFull post) {
         mView.startPostActivity(post);
     }
 }

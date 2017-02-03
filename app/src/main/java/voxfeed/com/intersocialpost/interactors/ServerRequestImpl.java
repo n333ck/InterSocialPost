@@ -7,7 +7,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import voxfeed.com.intersocialpost.model.Post;
+import voxfeed.com.intersocialpost.model.PostFull;
 import voxfeed.com.intersocialpost.networking.VoxFeedAPI;
 import voxfeed.com.intersocialpost.presenters.PostPresenterImpl;
 
@@ -25,14 +25,14 @@ public class ServerRequestImpl implements ServerRequest {
 
         VoxFeedAPI voxFeedAPI = retrofit.create(VoxFeedAPI.class);
 
-        voxFeedAPI.getPosts().enqueue(new Callback<List<Post>>() {
+        voxFeedAPI.getPosts().enqueue(new Callback<List<PostFull>>() {
             @Override
-            public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
+            public void onResponse(Call<List<PostFull>> call, Response<List<PostFull>> response) {
                 presenter.updatePost(response.body());
             }
 
             @Override
-            public void onFailure(Call<List<Post>> call, Throwable t) {
+            public void onFailure(Call<List<PostFull>> call, Throwable t) {
                 presenter.showFailureMessage();
             }
         });

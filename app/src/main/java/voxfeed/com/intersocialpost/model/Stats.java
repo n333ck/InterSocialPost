@@ -1,10 +1,13 @@
 
 package voxfeed.com.intersocialpost.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Stats {
+public class Stats implements Parcelable{
 
     @SerializedName("clicks")
     @Expose
@@ -21,6 +24,30 @@ public class Stats {
     @SerializedName("audience")
     @Expose
     private Integer audience;
+
+    protected Stats(Parcel in) {
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Stats> CREATOR = new Creator<Stats>() {
+        @Override
+        public Stats createFromParcel(Parcel in) {
+            return new Stats(in);
+        }
+
+        @Override
+        public Stats[] newArray(int size) {
+            return new Stats[size];
+        }
+    };
 
     public Object getClicks() {
         return clicks;

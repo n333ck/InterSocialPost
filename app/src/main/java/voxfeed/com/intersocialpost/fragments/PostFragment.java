@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
 import voxfeed.com.intersocialpost.R;
 import voxfeed.com.intersocialpost.activities.PostActivity;
 import voxfeed.com.intersocialpost.adapters.PostAdapter;
-import voxfeed.com.intersocialpost.model.Post;
+import voxfeed.com.intersocialpost.model.PostFull;
 import voxfeed.com.intersocialpost.presenters.PostPresenter;
 import voxfeed.com.intersocialpost.presenters.PostPresenterImpl;
 import voxfeed.com.intersocialpost.presenters.PostView;
@@ -55,7 +55,7 @@ public class PostFragment extends Fragment implements PostView{
     }
 
     @Override
-    public void updatePosts(List<Post> post) {
+    public void updatePosts(List<PostFull> post) {
         mAdapter = new PostAdapter(post, mPostPresenter);
         mRecyclerView.setAdapter(mAdapter);
     }
@@ -66,7 +66,7 @@ public class PostFragment extends Fragment implements PostView{
     }
 
     @Override
-    public void startPostActivity(Post post) {
+    public void startPostActivity(PostFull post) {
         Intent intent = new Intent(getActivity(), PostActivity.class);
         intent.putExtra(getString(R.string.post_bundle), post);
         getActivity().startActivity(intent);

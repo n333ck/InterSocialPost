@@ -9,104 +9,56 @@ import com.google.gson.annotations.SerializedName;
 
 public class Post implements Parcelable{
 
-    @SerializedName("id")
+    @SerializedName("text")
     @Expose
-    private String id;
-    @SerializedName("date")
+    private String text;
+    @SerializedName("image")
     @Expose
-    private String date;
-    @SerializedName("socialNetwork")
+    private String image;
+    @SerializedName("link")
     @Expose
-    private String socialNetwork;
-    @SerializedName("user")
-    @Expose
-    private User user;
-    @SerializedName("campaign")
-    @Expose
-    private Campaign campaign;
-    @SerializedName("brand")
-    @Expose
-    private Brand brand;
-    @SerializedName("post")
-    @Expose
-    private Post_ post;
-    @SerializedName("stats")
-    @Expose
-    private Stats stats;
-    @SerializedName("earnings")
-    @Expose
-    private Double earnings;
+    private String link;
 
-    public String getId() {
-        return id;
+    protected Post(Parcel in) {
+        text = in.readString();
+        image = in.readString();
+        link = in.readString();
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public static final Creator<Post> CREATOR = new Creator<Post>() {
+        @Override
+        public Post createFromParcel(Parcel in) {
+            return new Post(in);
+        }
+
+        @Override
+        public Post[] newArray(int size) {
+            return new Post[size];
+        }
+    };
+
+    public String getText() {
+        return text;
     }
 
-    public String getDate() {
-        return date;
+    public void setText(String text) {
+        this.text = text;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public String getImage() {
+        return image;
     }
 
-    public String getSocialNetwork() {
-        return socialNetwork;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public void setSocialNetwork(String socialNetwork) {
-        this.socialNetwork = socialNetwork;
+    public String getLink() {
+        return link;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Campaign getCampaign() {
-        return campaign;
-    }
-
-    public void setCampaign(Campaign campaign) {
-        this.campaign = campaign;
-    }
-
-    public Brand getBrand() {
-        return brand;
-    }
-
-    public void setBrand(Brand brand) {
-        this.brand = brand;
-    }
-
-    public Post_ getPost() {
-        return post;
-    }
-
-    public void setPost(Post_ post) {
-        this.post = post;
-    }
-
-    public Stats getStats() {
-        return stats;
-    }
-
-    public void setStats(Stats stats) {
-        this.stats = stats;
-    }
-
-    public Double getEarnings() {
-        return earnings;
-    }
-
-    public void setEarnings(Double earnings) {
-        this.earnings = earnings;
+    public void setLink(String link) {
+        this.link = link;
     }
 
     @Override
@@ -116,16 +68,8 @@ public class Post implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(socialNetwork);
+        dest.writeString(text);
+        dest.writeString(image);
+        dest.writeString(link);
     }
-
-    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
-        public Post createFromParcel(Parcel in) {
-            return new Post();
-        }
-
-        public Post[] newArray(int size) {
-            return new Post[size];
-        }
-    };
 }

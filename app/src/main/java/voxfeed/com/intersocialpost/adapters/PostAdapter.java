@@ -14,11 +14,11 @@ import java.util.List;
 
 import butterknife.BindView;
 import voxfeed.com.intersocialpost.R;
-import voxfeed.com.intersocialpost.model.Post;
+import voxfeed.com.intersocialpost.model.PostFull;
 import voxfeed.com.intersocialpost.presenters.PostPresenter;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
-    private List<Post> mDataset;
+    private List<PostFull> mDataset;
     private PostPresenter mPostPresenter;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -31,7 +31,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         }
     }
 
-    public PostAdapter(List<Post> dataset, PostPresenter presenter) {
+    public PostAdapter(List<PostFull> dataset, PostPresenter presenter) {
         mDataset = dataset;
         mPostPresenter = presenter;
     }
@@ -45,7 +45,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        final Post post = mDataset.get(position);
+        final PostFull post = mDataset.get(position);
         holder.textItem.setText("Item: " + post.getPost().getText());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
