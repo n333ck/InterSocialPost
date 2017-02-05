@@ -9,7 +9,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import voxfeed.com.intersocialpost.model.PostFull;
 import voxfeed.com.intersocialpost.networking.VoxFeedAPI;
-import voxfeed.com.intersocialpost.presenters.PostPresenterImpl;
+import voxfeed.com.intersocialpost.presenters.PostFragmentPresenterImpl;
 
 /**
  * Created by rjasso on 02/02/2017.
@@ -17,7 +17,7 @@ import voxfeed.com.intersocialpost.presenters.PostPresenterImpl;
 
 public class ServerRequestImpl implements ServerRequest {
     @Override
-    public void getPosts(final PostPresenterImpl presenter) {
+    public void getPosts(final PostFragmentPresenterImpl presenter) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(VoxFeedAPI.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())

@@ -1,8 +1,11 @@
 package voxfeed.com.intersocialpost.fragments;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,8 +21,8 @@ import voxfeed.com.intersocialpost.R;
 import voxfeed.com.intersocialpost.activities.PostActivity;
 import voxfeed.com.intersocialpost.adapters.PostAdapter;
 import voxfeed.com.intersocialpost.model.PostFull;
-import voxfeed.com.intersocialpost.presenters.PostPresenter;
-import voxfeed.com.intersocialpost.presenters.PostPresenterImpl;
+import voxfeed.com.intersocialpost.presenters.PostFragmentPresenter;
+import voxfeed.com.intersocialpost.presenters.PostFragmentPresenterImpl;
 import voxfeed.com.intersocialpost.presenters.PostView;
 
 /**
@@ -28,7 +31,7 @@ import voxfeed.com.intersocialpost.presenters.PostView;
 
 public class PostFragment extends Fragment implements PostView{
     private PostAdapter mAdapter;
-    private PostPresenter mPostPresenter;
+    private PostFragmentPresenter mPostPresenter;
 
     @BindView(R.id.post_recycler_view)
     RecyclerView mRecyclerView;
@@ -48,8 +51,10 @@ public class PostFragment extends Fragment implements PostView{
         mRecyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(linearLayoutManager);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(), linearLayoutManager.getOrientation());
+        mRecyclerView.addItemDecoration(dividerItemDecoration);
 
-        mPostPresenter = new PostPresenterImpl(this);
+        mPostPresenter = new PostFragmentPresenterImpl(this);
         mPostPresenter.loadPosts();
         return rootView;
     }
@@ -63,12 +68,17 @@ public class PostFragment extends Fragment implements PostView{
     @Override
     public void showFailureMessage() {
         Toast.makeText(getActivity(), R.string.failure_message, Toast.LENGTH_LONG).show();
+        getActivity().finish();
     }
 
     @Override
     public void startPostActivity(PostFull post) {
         Intent intent = new Intent(getActivity(), PostActivity.class);
         intent.putExtra(getString(R.string.post_bundle), post);
-        getActivity().startActivity(intent);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getActivity().startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle());
+        } else {
+            getActivity().startActivity(intent);
+        }
     }
 }

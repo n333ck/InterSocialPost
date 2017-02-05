@@ -1,7 +1,6 @@
 
 package voxfeed.com.intersocialpost.model;
 
-import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 

@@ -3,4 +3,13 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="VoxFeedPrimaryColor">#16D4E6</color>
+    <color name="VoxFeedFacebookColor">#45609C</color>
+    <color name="VoxFeedTwitterColor">#1DA1F2</color>
+    <color name="VoxFeedInstagramColor">#E4405F</color>
+    <color name="VoxFeedTextColor">#030303</color>
+    <color name="VoxFeedValueTextColor">#8F8E94</color>
+    <color name="VoxFeedBottomColor">#ACE12D</color>
 </resources>

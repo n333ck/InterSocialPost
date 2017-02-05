@@ -11,7 +11,7 @@ import voxfeed.com.intersocialpost.model.PostFull;
  */
 
 public interface VoxFeedAPI {
-    static final String BASE_URL = "https://api.voxfeed.com";
+    String BASE_URL = "https://api.voxfeed.com";
 
     @GET("/public/promoted_messages")
     Call<List<PostFull>> getPosts();

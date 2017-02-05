@@ -1,11 +1,11 @@
 package voxfeed.com.intersocialpost.interactors;
 
-import voxfeed.com.intersocialpost.presenters.PostPresenterImpl;
+import voxfeed.com.intersocialpost.presenters.PostFragmentPresenterImpl;
 
 /**
  * Created by rjasso on 02/02/2017.
  */
 
 public interface ServerRequest {
-    void getPosts(PostPresenterImpl presenter);
+    void getPosts(PostFragmentPresenterImpl presenter);
 }

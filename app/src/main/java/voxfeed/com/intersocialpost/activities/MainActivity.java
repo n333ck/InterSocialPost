@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity implements MainView{
 
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-
         mTabLayout.setupWithViewPager(mViewPager);
     }
 

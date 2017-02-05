@@ -11,7 +11,7 @@ public class Stats implements Parcelable{
 
     @SerializedName("clicks")
     @Expose
-    private Object clicks;
+    private Integer clicks;
     @SerializedName("shares")
     @Expose
     private Integer shares;
@@ -26,10 +26,21 @@ public class Stats implements Parcelable{
     private Integer audience;
 
     protected Stats(Parcel in) {
+        clicks = in.readInt();
+        shares = in.readInt();
+        likes = in.readInt();
+        comments = in.readInt();
+        audience = in.readInt();
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+
+        dest.writeInt(clicks == null ? 0 : clicks);
+        dest.writeInt(shares == null ? 0 : shares);
+        dest.writeInt(likes == null ? 0 : likes);
+        dest.writeInt(comments == null ? 0 : comments);
+        dest.writeInt(audience == null ? 0 : audience);
     }
 
     @Override
@@ -49,11 +60,11 @@ public class Stats implements Parcelable{
         }
     };
 
-    public Object getClicks() {
+    public Integer getClicks() {
         return clicks;
     }
 
-    public void setClicks(Object clicks) {
+    public void setClicks(Integer clicks) {
         this.clicks = clicks;
     }
 
